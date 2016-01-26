@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "homepage": "https://github.com/jackcat13/Okateo",
   "authors": [
-    "François Caillet <Francois.caillet@calopea.com>"
+    "François Caillet <Francois.caillet@calopea.com>"
   ],
   "description": "application web, fonctionne avec les Makey-Makey, \"guitar hero like\"",
   "license": "MIT",

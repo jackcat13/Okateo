@@ -1,26 +1,28 @@
 <?php
-  require_once("functions.php");
+require_once("functions.php");
 ?>
 
 <html>
-  <head>
+<head>
     <title>Okateo</title>
     <meta content="">
-    <style></style>
-    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
     <script type='text/javascript' src='http://www.midijs.net/lib/midi.js'></script>
     <script type='text/javascript' src='script/Sequencer.js'></script>
     <script type='text/javascript' src='script/main.js'></script>
-  </head>
-  <body>
-  	<div id="content">
-  		<div id="midiSongsList">
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+<div id="content">
+    <div id="midiSongsList">
         <?php
-          initSongsList();
+        initSongsList();
         ?>
-  		</div>
+    </div>
 
-  		<button id="play">Play</button>
-  	</div>
-  </body>
+    <button id="play">Play</button>
+</div>
+</body>
 </html>
