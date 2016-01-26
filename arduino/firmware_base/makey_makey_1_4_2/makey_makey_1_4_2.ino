@@ -38,6 +38,8 @@
 //#define TARGET_LOOP_TIME 694   // (1/60 seconds) / 24 samples = 694 microseconds per sample 
 //#define TARGET_LOOP_TIME 758  // (1/55 seconds) / 24 samples = 758 microseconds per sample 
 #define TARGET_LOOP_TIME 744  // (1/56 seconds) / 24 samples = 744 microseconds per sample 
+#define NB_LEDS 6
+#define TERMINATOR ';'
 
 // id numbers for mouse movement inputs (used in settings.h)
 #define MOUSE_MOVE_UP       -1 
@@ -86,9 +88,13 @@ int mouseHoldCount[NUM_INPUTS]; // used to store mouse movement hold data
 // input pin numbers for kickstarter production board
 int pinNumbers[NUM_INPUTS] = {
   12, 8, 13, 15, 7, 6,     // top of makey makey board
-  5, 4, 3, 2, 1, 0,        // left side of female header, KEBYBOARD
-  23, 22, 21, 20, 19, 18   // right side of female header, MOUSE
+  5, 4, 3, 2, 1, 0        // left side of female header, KEBYBOARD
+  //23, 22, 21, 20, 19, 18   // right side of female header, MOUSE
 };
+const int ledPinNumbers[NB_LEDS] = {
+	18, 19, 20, 21, 22, 23
+};
+bool ledStatus[NB_LEDS];
 
 // input status LED pin numbers
 const int inputLED_a = 9;
@@ -119,12 +125,19 @@ void addDelay();
 void cycleLEDs();
 void danceLeds();
 void updateOutLEDs();
+void switchLed(int ledToSwitch);
+String readFromSerial();
+void initializeLEDs();
 
 //////////////////////
 // SETUP /////////////
 //////////////////////
 void setup() 
 {
+  Serial.begin(9600);
+  Serial.setTimeout(10);
+  initializeLEDs();
+  
   initializeArduino();
   initializeInputs();
   danceLeds();
@@ -141,9 +154,55 @@ void loop()
   updateInputStates();
   sendMouseButtonEvents();
   sendMouseMovementEvents();
-  cycleLEDs();
-  updateOutLEDs();
+  //cycleLEDs();
+  //updateOutLEDs();
   addDelay();
+  
+  String buf = readFromSerial();
+	int ledToSwitch = -1;
+	
+	if(buf.length() > 0) {
+		ledToSwitch = buf.toInt();
+		#ifdef DEBUG
+		Serial.prinln(buf);
+		#endif
+	}
+	switchLed(ledToSwitch);
+	delay(10);
+}
+
+
+//////////////////////////
+// SWITCH LEDS
+//////////////////////////
+void switchLed (int ledToSwitch){
+  if(ledToSwitch >= 0){
+    if(ledStatus[ledToSwitch]){
+      digitalWrite(ledPinNumbers[ledToSwitch], LOW);
+      ledStatus[ledToSwitch] = false;
+    } else {
+      digitalWrite(ledPinNumbers[ledToSwitch], HIGH);
+      ledStatus[ledToSwitch] = true;
+    }
+  }
+}
+
+//////////////////////////
+// READ FROM SERIAL
+//////////////////////////
+String readFromSerial (){
+  return Serial.readStringUntil(TERMINATOR);
+}
+
+//////////////////////////
+// INITIALIZE LEDS
+//////////////////////////
+void initializeLEDs (){
+  for(int i = 0; i < NB_LEDS; i++){
+    ledStatus[i] = false;
+    pinMode(ledPinNumbers[i], OUTPUT);
+    digitalWrite(ledPinNumbers[i], LOW);
+  }
 }
 
 //////////////////////////
