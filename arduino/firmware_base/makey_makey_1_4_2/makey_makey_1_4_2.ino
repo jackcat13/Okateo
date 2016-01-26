@@ -34,7 +34,7 @@
 ////////////////////////
 
 #define BUFFER_LENGTH    3     // 3 bytes gives us 24 samples
-#define NUM_INPUTS       18    // 6 on the front + 12 on the back
+#define NUM_INPUTS       12    // 6 on the front + 12 on the back
 //#define TARGET_LOOP_TIME 694   // (1/60 seconds) / 24 samples = 694 microseconds per sample 
 //#define TARGET_LOOP_TIME 758  // (1/55 seconds) / 24 samples = 758 microseconds per sample 
 #define TARGET_LOOP_TIME 744  // (1/56 seconds) / 24 samples = 744 microseconds per sample 
@@ -164,7 +164,7 @@ void loop()
 	if(buf.length() > 0) {
 		ledToSwitch = buf.toInt();
 		#ifdef DEBUG
-		Serial.prinln(buf);
+		Serial.println(buf);
 		#endif
 	}
 	switchLed(ledToSwitch);
