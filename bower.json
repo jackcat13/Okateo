@@ -1,0 +1,20 @@
+{
+  "name": "Okateo",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jackcat13/Okateo",
+  "authors": [
+    "François Caillet <Francois.caillet@calopea.com>"
+  ],
+  "description": "application web, fonctionne avec les Makey-Makey, \"guitar hero like\"",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  }
+}
