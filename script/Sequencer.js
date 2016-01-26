@@ -1,12 +1,11 @@
 //class definition
-function Sequencer (midiSong) {
+function Sequencer () {
 
-	//Midi song to select
-	this.midiSong = midiSong;
+	this.midiSong="";
 
 	//Method to import a midi song on the server
 	this.import = function(){
-		
+
 	}
 
 	//Method to play the song stored in midiSong attribute

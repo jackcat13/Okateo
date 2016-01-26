@@ -1,3 +1,7 @@
+<?php
+  require_once("functions.php");
+?>
+
 <html>
   <head>
     <title>Okateo</title>
@@ -10,7 +14,13 @@
   </head>
   <body>
   	<div id="content">
-  		<button id="play" type="button">Play!</button> 
+  		<div id="midiSongsList">
+        <?php
+          initSongsList();
+        ?>
+  		</div>
+
+  		<button id="play">Play</button>
   	</div>
   </body>
 </html>
