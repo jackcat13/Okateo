@@ -7,9 +7,11 @@ require_once("functions.php");
     <title>Okateo</title>
     <meta content="">
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="script/jquery-2.2.0.min.js"></script>
     <script type='text/javascript' src='http://www.midijs.net/lib/midi.js'></script>
     <script type='text/javascript' src='script/Sequencer.js'></script>
     <script type='text/javascript' src='script/main.js'></script>
+
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/bower_components/fancybox/source/jquery.fancybox.css" type="text/css" media="screen">
@@ -28,8 +30,40 @@ require_once("functions.php");
     </div>
 
     <button id="play">Play</button>
+
+    <div id="leds">
+        <p>
+        <div class="button-player player-1">
+            <div class="effect player-1">
+            </div>
+        </div>
+        Numpad 1
+        </p>
+        <p>
+        <div class="button-player player-2">
+            <div class="effect player-2"></div>
+        </div>Numpad 2
+     </p>
+
+        <div class="button-player player-3">
+            <div class="effect player-3"></div>
+        </div>Numpad 3
+
+        <div class="button-player player-4">
+            <div class="effect player-4"></div>
+        </div>Numpad 4
+
+        <div class="button-player player-5">
+            <div class="effect player-5"></div>
+        </div>Numpad 5
+
+        <div class="button-player player-6">
+            <div class="effect player-6"></div>
+        </div>Numpad 6
+    </div>
 </div>
 
 <?php include 'footer.php'; ?>
 </body>
+<script type='text/javascript' src='script/effects.js'></script>
 </html>

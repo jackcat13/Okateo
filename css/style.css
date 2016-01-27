@@ -41,3 +41,75 @@ body {
 .row input{
     margin-bottom: 15px;
 }
+
+.button-player{
+    display:table-cell;
+    width:75px;
+    height:75px;
+    border:1px solid black;
+    vertical-align:middle;
+    text-align:center;
+    border-radius:50px; 
+    -moz-box-shadow: 2px 2px 5px -2px #656565;
+-webkit-box-shadow: 2px 2px 5px -2px #656565;
+-o-box-shadow: 2px 2px 5px -2px #656565;
+box-shadow: 2px 2px 5px -2px #656565;
+filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=5);  
+
+}
+
+.button-player span{
+    position:fixed;
+}
+
+.effect {
+    border:0px solid black;
+    border-radius:50px;
+    display:inline-block;
+    width:0px;
+    height:0px; 
+}
+
+.clicked .effect{
+    
+        animation-name: border-effect;
+        animation-duration: 0.2s;
+}
+
+@keyframes border-effect {
+0% {
+    width: 0px;
+    height: 0px;
+    
+}
+1% {
+    border-width: 20px;
+}
+    100% {width: 75px;
+    height:75px;
+    border-width: 0px;}
+}
+
+.player-1{
+    border-color: red;
+}
+
+.player-2{
+    border-color: black;
+}
+
+.player-3{
+    border-color: green;
+}
+
+.player-4{
+    border-color: orange;
+}
+
+.player-5{
+    border-color: purple;
+}
+
+.player-6{
+    border-color: blue;
+}
