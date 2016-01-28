@@ -228,10 +228,28 @@ body {
     background-color: rgba(0, 0, 255, 0.06);;
 }
 
-
-.led-input.active {
-    border-color: green;
+.glow{
+     -webkit-animation: glowing 0.5s ease; /* Chrome, Safari, Opera */
+    animation: example 0.5s ease;
+}
+@keyframes glowing {
+    0%{
+        border-color: green;
+    -webkit-box-shadow: 0 0 0px green;
+       -moz-box-shadow: 0 0 0px green;
+            box-shadow: 0 0 0px green;
+    }
+    50%{
+        order-color: green;
     -webkit-box-shadow: 0 0 5px green;
        -moz-box-shadow: 0 0 5px green;
             box-shadow: 0 0 5px green;
+    }
+    100%{
+    border-color: green;
+        -webkit-box-shadow: 0 0 0px green;
+           -moz-box-shadow: 0 0 0px green;
+                box-shadow: 0 0 0px green;
+    }
+    
 }

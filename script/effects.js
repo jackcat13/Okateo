@@ -2,13 +2,13 @@
 	console.log("Time to Smatch BUTTONS !");
 	prepareKeyboardEvents();
 });*/
+
+var keyId = 0;
+
 	$(document).keypress(function(event){
 		switch(event.which){
 			case 49: 
 				$(".button-player.player-1").addClass('clicked');
-				if($(".led-player.player-1").hasClass('lighting')){
-					$('.led-input.player-1').toggleClass('active',1000);
-				}
 				break;
 			case 50: 
 				$(".button-player.player-2").addClass('clicked');
@@ -84,16 +84,16 @@ function detectOverlapping(div1, div2) {
 
 
 var spawnKey = function(playerNum){
-	var keyModel = $('<div class="key"></div>');
+	var keyModel = $('<div class="key key-'+keyId+'"></div>');
+
 	var fatherDiv = $('.led-input.player-'+playerNum);
 	fatherDiv.append(keyModel);
 
-	var actualKey = $('.led-input.player-'+playerNum).find('.key');
+	
+	var actualKey = $('.led-input.player-'+playerNum).find('.key-'+keyId);
 	var correspondingLed = $('.led-player.player-'+playerNum);
-	console.log(actualKey[0]);
-	console.log(correspondingLed[0]);
 	actualKey.animate({
-		right: '90%'
+		right: '100%'
 	},{
 		duration : 5000,
 		easing: "linear",
@@ -101,74 +101,89 @@ var spawnKey = function(playerNum){
 			var keyX = actualKey.position().left;
 			var ledX = correspondingLed.position().left;
 			var ledWidth = correspondingLed.width();				
-			if(keyX <=  ledX + ledWidth && keyX >= ledX){
+			if(keyX <=  ledX + ledWidth && keyX+15 >= ledX){
 				correspondingLed.addClass('lighting');
 				fireMakeyMakeyLeds(playerNum);
 				$(document).keypress(function(event){
 					switch(event.which){
 						case 49: 
 							if($(".led-player.player-1").hasClass('lighting')){
-								keyOnTime(actualKey);
-								$('.led-input.player-1').toggleClass('active',1000);
+								keyOnTime(playerNum, actualKey);
+								$('.led-input.player-1').toggleClass('glow',1000);
 								
 							}
 							break;
 						case 50: 
 							if($(".led-player.player-2").hasClass('lighting')){
-								keyOnTime(actualKey);
-								$('.led-input.player-2').toggleClass('active',1000);
+								keyOnTime(playerNum, actualKey);
+								$('.led-input.player-2').toggleClass('glow',1000);
 								
 							}
 							break;
 						case 51: 
 							if($(".led-player.player-3").hasClass('lighting')){
-								keyOnTime(actualKey);
-								$('.led-input.player-3').toggleClass('active',1000);
+								keyOnTime(playerNum, actualKey);
+								$('.led-input.player-3').toggleClass('glow',1000);
 								
 							}
 							break;
 						case 52: 
 							if($(".led-player.player-4").hasClass('lighting')){
-								keyOnTime(actualKey);
-								$('.led-input.player-4').toggleClass('active',1000);
+								keyOnTime(playerNum, actualKey);
+								$('.led-input.player-4').toggleClass('glow',1000);
 								
 							}
 							break;
 						case 53: 
 							if($(".led-player.player-5").hasClass('lighting')){
-								keyOnTime(actualKey);
-								$('.led-input.player-5').toggleClass('active',1000);
+								keyOnTime(playerNum, actualKey);
+								$('.led-input.player-5').toggleClass('glow',1000);
 								
 							}
 							break;
 						case 54: 
 							if($(".led-player.player-6").hasClass('lighting')){
-								keyOnTime(actualKey);
-								$('.led-input.player-6').toggleClass('active',1000);
+								keyOnTime(playerNum, actualKey);
+								$('.led-input.player-6').toggleClass('glow',1000);
 								
 							}
 							break;
 					}
 				});
+			}else{
+				$(".led-player.player-"+playerNum).removeClass('lighting');
 			}
 		},
 		complete: function(){
+
+			actualKey.stop();
 			actualKey.remove();
-			correspondingLed.removeClass('lighting');
+			$('.led-input.player-1').find('.key').first()
 		}
 		});
+	keyId += 1;
 };
 
-var keyOnTime = function(key){
-	playKey(key);
+var keyOnTime = function(playerNum, key){
+	$(".led-player.player-"+playerNum).removeClass('lighting');
+	key.stop();
 	key.remove();
+	playKey(key);
+	
 
 
 }
 var playKey = function(){
-	console.log("Quel joli bruit !");
 }
 
 var fireMakeyMakeyLeds = function(playerNum){
 
 }
+
+var spawnRandomKey = function(){
+	var num = Math.floor(Math.random()*6+1);
+	spawnKey(num);
+	window.setTimeout(spawnRandomKey,1000);
+}
+
+spawnRandomKey();
