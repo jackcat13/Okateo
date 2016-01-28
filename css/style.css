@@ -42,7 +42,25 @@ body {
     margin-bottom: 15px;
 }
 
-.button-player{
+.key {
+    width:55px;
+    height:25px;
+    border:0px solid black;
+    border-radius:10px;
+    margin-right: 20px;
+    right: 0px;
+    position: absolute;
+    margin-top: -48px;
+}
+
+.led-input{
+    margin: 10px;
+    padding: 10px;
+}
+
+.button-player{1
+    position: relative;
+    background-color: transparent !important;
     display:table-cell;
     width:75px;
     height:75px;
@@ -51,21 +69,18 @@ body {
     text-align:center;
     border-radius:50px; 
     -moz-box-shadow: 2px 2px 5px -2px #656565;
--webkit-box-shadow: 2px 2px 5px -2px #656565;
--o-box-shadow: 2px 2px 5px -2px #656565;
-box-shadow: 2px 2px 5px -2px #656565;
-filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=5);  
+    -webkit-box-shadow: 2px 2px 5px -2px #656565;
+    -o-box-shadow: 2px 2px 5px -2px #656565;
+    box-shadow: 2px 2px 5px -2px #656565;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=5);  
 
-}
-
-.button-player span{
-    position:fixed;
 }
 
 .effect {
     border:0px solid black;
     border-radius:50px;
     display:inline-block;
+    background-color: transparent !important;
     width:0px;
     height:0px; 
 }
@@ -85,31 +100,138 @@ filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, St
 1% {
     border-width: 20px;
 }
-    100% {width: 75px;
-    height:75px;
+    100% {width: 74px;
+    height:74px;
     border-width: 0px;}
 }
 
+.led-player{
+    position: relative;
+    display:table-cell;
+    width:75px;
+    height:75px;
+    outline:1px solid black ;
+    vertical-align:middle;
+    text-align:center; 
+    background-color: transparent;
+    -moz-box-shadow: 2px 2px 5px -2px #656565;
+    -webkit-box-shadow: 2px 2px 5px -2px #656565;
+    -o-box-shadow: 2px 2px 5px -2px #656565;
+    box-shadow: 2px 2px 5px -2px #656565;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=5);  
+
+}
+
+.led{
+    border:0px solid black;
+    display:inline-block;
+    width:0px;
+    height:0px; 
+}
+
+.lighting .background{
+    
+        animation-name: led-effect;
+        animation-fill-mode: forwards;
+        animation-duration: 0.1s;
+}
+
+@keyframes led-effect {
+0% {
+    width: 0px;
+    height: 0px;
+    
+}
+1% {;
+}
+    100% {width: 75px;
+    height:75px;}
+}
+
+
+
 .player-1{
     border-color: red;
+    outline-color:red;
 }
 
 .player-2{
     border-color: black;
+    outline-color:black;
 }
 
 .player-3{
     border-color: green;
+    outline-color:green;
 }
 
 .player-4{
     border-color: orange;
+    outline-color:orange;
 }
 
 .player-5{
     border-color: purple;
+    outline-color:purple;
 }
 
 .player-6{
     border-color: blue;
+    outline-color:blue;
+}
+
+.background.player-1, .player-1 .key{
+    background-color: red;
+}
+
+.background.player-2, .player-2 .key{
+    background-color: black;
+}
+
+.background.player-3, .player-3 .key{
+    background-color: green;
+}
+
+.background.player-4, .player-4 .key{
+    background-color: orange;
+}
+
+.background.player-5, .player-5 .key{
+    background-color: purple;
+}
+
+.background.player-6, .player-6 .key{
+    background-color: blue;
+}
+
+.led-input.background.player-1{
+    background-color: rgba(255, 0, 0, 0.06);;
+}
+
+.led-input.background.player-2{
+    background-color: rgba(0, 0, 0, 0.06);;
+}
+
+.led-input.background.player-3{
+    background-color: rgba(0, 255, 0, 0.06);;
+}
+
+.led-input.background.player-4{
+    background-color: rgba(255, 165, 0, 0.06);
+}
+
+.led-input.background.player-5{
+    background-color: rgba(165, 0, 255, 0.06);
+}
+
+.led-input.background.player-6{
+    background-color: rgba(0, 0, 255, 0.06);;
+}
+
+
+.led-input.active {
+    border-color: green;
+    -webkit-box-shadow: 0 0 5px green;
+       -moz-box-shadow: 0 0 5px green;
+            box-shadow: 0 0 5px green;
 }

@@ -32,34 +32,74 @@ require_once("functions.php");
     <button id="play">Play</button>
 
     <div id="leds">
-        <p>
-        <div class="button-player player-1">
-            <div class="effect player-1">
+        <div class="led-input background player-1">
+            <div class="button-player player-1">
+                <div class="effect player-1">
+                </div>
+            </div>
+
+            <div class="led-player player-1">
+                <div class="led background player-1">
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="led-input background player-2">
+            <div class="button-player player-2">
+                <div class="effect player-2"></div>
+            </div>
+
+            <div class="led-player player-2">
+                <div class="led background player-2">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="led-input background player-3">
+            <div class="button-player player-3">
+                <div class="effect player-3"></div>
+            </div>
+
+            <div class="led-player player-3">
+                <div class="led background player-3">
+                </div>
             </div>
         </div>
-        Numpad 1
-        </p>
-        <p>
-        <div class="button-player player-2">
-            <div class="effect player-2"></div>
-        </div>Numpad 2
-     </p>
 
-        <div class="button-player player-3">
-            <div class="effect player-3"></div>
-        </div>Numpad 3
+        <div class="led-input background player-4">
+            <div class="button-player player-4">
+                <div class="effect player-4"></div>
+            </div>
 
-        <div class="button-player player-4">
-            <div class="effect player-4"></div>
-        </div>Numpad 4
+            <div class="led-player player-4">
+                <div class="led background player-4">
+                </div>
+            </div>
+        </div>
 
-        <div class="button-player player-5">
-            <div class="effect player-5"></div>
-        </div>Numpad 5
+        <div class="led-input background player-5">
+            <div class="button-player player-5">
+                <div class="effect player-5"></div>
+            </div>
 
-        <div class="button-player player-6">
-            <div class="effect player-6"></div>
-        </div>Numpad 6
+            <div class="led-player player-5">
+                <div class="led background player-5">
+                </div>
+            </div>
+        </div>
+
+        <div class="led-input background player-6">
+            <div class="button-player player-6">
+                <div class="effect player-6"></div>
+            </div>
+
+            <div class="led-player player-6">
+                <div class="led background player-6">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
