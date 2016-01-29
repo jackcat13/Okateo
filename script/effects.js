@@ -38,22 +38,28 @@ var evenenemnt = null;
 	$(document).keyup(function(event){
 		evenement = null;
 		switch(event.which){
-			case 97: 
+			case 97:
+			case 49: 
 				$(".button-player.player-1").removeClass('clicked');
 				break;
-			case 98: 
+			case 98:
+			case 50:  
 				$(".button-player.player-2").removeClass('clicked');
 				break;
-			case 99: 
+			case 99:
+			case 51:  
 				$(".button-player.player-3").removeClass('clicked');
 				break;
-			case 100: 
+			case 100:
+			case 52:  
 				$(".button-player.player-4").removeClass('clicked');
 				break;
-			case 101: 
+			case 101:
+			case 53:  
 				$(".button-player.player-5").removeClass('clicked');
 				break;
-			case 102: 
+			case 102:
+			case 54:  
 				$(".button-player.player-6").removeClass('clicked');
 				break;
 		}
