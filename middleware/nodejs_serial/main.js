@@ -94,5 +94,5 @@ function onStdinLine (data){
 }
 
 function usage (){
-	console.log('Usage : node main.js <serial_port_number>');
+	console.log('Usage : node main.js <serial_port_name>');
 }

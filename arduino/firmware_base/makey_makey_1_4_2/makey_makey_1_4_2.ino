@@ -164,7 +164,7 @@ void loop()
 	if(buf.length() > 0) {
 		ledToSwitch = buf.toInt();
 		#ifdef DEBUG
-		Serial.prinln(buf);
+		Serial.println(buf);
 		#endif
 	}
 	switchLed(ledToSwitch);
