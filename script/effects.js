@@ -81,7 +81,7 @@ var spawnKey = function(playerNum){
 	actualKey.animate({
 		right: '100%'
 	},{
-		duration : 4500,
+		duration : 6000,
 		easing: "linear",
 		complete: function(){
 
@@ -106,7 +106,7 @@ var fireMakeyMakeyLeds = function(playerNum){
 var spawnRandomKey = function(){
 	var num = Math.floor(Math.random()*6+1);
 	spawnKey(num);
-	window.setTimeout(spawnRandomKey,1000);
+	window.setTimeout(spawnRandomKey,5000);
 }
 
 spawnRandomKey();
@@ -114,21 +114,18 @@ spawnRandomKey();
 var collision = function(){
 	for(var key in keys){
 		var x = keys[key].position().left;
-		if(x <= ledX + ledWidth+20 && x+15 >= ledX){
+		if(x <= ledX + ledWidth+50 && x+15 >= ledX){
 			if(leds[keys[key].player-1] == false){
 				leds[keys[key].player-1] = true;
-				$.get("http://localhost:8008/led/"+(keys[key].player-1), function(){
-					window.setTimeout(function(){
-						$.get("http://localhost:8008/led/"+(keys[key].player-1));
-						leds[keys[key].player-1] = false
-					},600);
-				});
+				$.get("http://localhost:8008/led/"+(keys[key].player-1));
 			}
 			keys[key].container.addClass('lighting');
 			if(typeof evenement != "undefined" && evenement != null){
 				switch(evenement.which){
 						case 49: 
 							if(keys[key].player == 1){
+								$.get("http://localhost:8008/led/"+(keys[key].player-1));
+								leds[keys[key].player-1] = false;
 								keys[key].container.removeClass('lighting');
 								keys[key].remove();
 								keys.splice(key,1);
@@ -143,6 +140,8 @@ var collision = function(){
 							break;
 						case 50: 
 							if(keys[key].player == 2){
+								$.get("http://localhost:8008/led/"+(keys[key].player-1));
+								leds[keys[key].player-1] = false;
 								keys[key].container.removeClass('lighting');
 								keys[key].remove();
 								keys.splice(key,1);
@@ -157,6 +156,8 @@ var collision = function(){
 							break;
 						case 51: 
 							if(keys[key].player == 3){
+								$.get("http://localhost:8008/led/"+(keys[key].player-1));
+								leds[keys[key].player-1] = false;
 								keys[key].container.removeClass('lighting');
 								keys[key].remove();
 								keys.splice(key,1);
@@ -171,6 +172,8 @@ var collision = function(){
 							break;
 						case 52: 
 							if(keys[key].player == 4){
+								$.get("http://localhost:8008/led/"+(keys[key].player-1));
+								leds[keys[key].player-1] = false;
 								keys[key].container.removeClass('lighting');
 								keys[key].remove();
 								keys.splice(key,1);
@@ -185,6 +188,8 @@ var collision = function(){
 							break;
 						case 53: 
 							if(keys[key].player == 5){
+								$.get("http://localhost:8008/led/"+(keys[key].player-1));
+								leds[keys[key].player-1] = false;
 								keys[key].container.removeClass('lighting');
 								keys[key].remove();
 								keys.splice(key,1);
@@ -199,6 +204,8 @@ var collision = function(){
 							break;
 						case 54: 
 							if(keys[key].player == 6){
+								$.get("http://localhost:8008/led/"+(keys[key].player-1));
+								leds[keys[key].player-1] = false;
 								keys[key].container.removeClass('lighting');
 								keys[key].remove();
 								keys.splice(key,1);
@@ -214,10 +221,11 @@ var collision = function(){
 					}
 			}
 		}else if( x < ledX){
+			$.get("http://localhost:8008/led/"+(keys[key].player-1));
+			leds[keys[key].player-1] = false;
 			keys[key].container.removeClass('lighting');
 			keys[key].remove();
 			keys.splice(key,1);
-			leds[key] = false;
 		}
 	}
 }
