@@ -7,7 +7,8 @@ var keyId = 0;
 var keys = [];
 var ledWidth = $('.led-player.player-1').width();
 var ledX = $('.led-player.player-1').position().left;
-var evenenemnt = null;		
+var evenenemnt = null;
+var leds = [false,false,false,false,false,false];
 
 	$(document).keypress(function(event){
 		switch(event.which){
@@ -114,69 +115,86 @@ var collision = function(){
 	for(var key in keys){
 		var x = keys[key].position().left;
 		if(x <= ledX + ledWidth+20 && x+15 >= ledX){
-			keys[key].container.addClass('lighting');
-			if(evenement != "undefined" && evenement != null){
-				switch(evenement.which){
-						case 49: 
-							if(keys[key].player == 1){
-								keys[key].container.removeClass('lighting');
-								keys[key].remove();
-								keys.splice(key,1);
-								console.log('Player 1 SCORED !');
-							}
-							break;
-						case 50: 
-							if(keys[key].player == 2){
-								keys[key].container.removeClass('lighting');
-								keys[key].remove();
-								keys.splice(key,1);
-								console.log('Player 2 SCORED !');
-							}
-							break;
-						case 51: 
-							if(keys[key].player == 3){
-								keys[key].container.removeClass('lighting');
-								keys[key].remove();
-								keys.splice(key,1);
-								console.log('Player 3 SCORED !');
-							}
-							break;
-						case 52: 
-							if(keys[key].player == 4){
-								keys[key].container.removeClass('lighting');
-								keys[key].remove();
-								keys.splice(key,1);
-								console.log('Player 4 SCORED !');
-							}
-							break;
-						case 53: 
-							if(keys[key].player == 5){
-								keys[key].container.removeClass('lighting');
-								keys[key].remove();
-								keys.splice(key,1);
-								console.log('Player 5 SCORED !');
-							}
-							break;
-						case 54: 
-							if(keys[key].player == 6){
-								keys[key].container.removeClass('lighting');
-								keys[key].remove();
-								keys.splice(key,1);
-								console.log('Player 6 SCORED !');
-							}
-							break;
-					}
+			if(leds[keys[key].player-1] == false){
+				leds[keys[key].player-1] = true;
+				$.get("http://localhost:8008/led/"+(keys[key].player-1), function(){
+					window.setTimeout(function(){
+						$.get("http://localhost:8008/led/"+(keys[key].player-1));
+						leds[keys[key].player-1] = false
+					},600);
+				});
 			}
+			keys[key].container.addClass('lighting');
+			if(typeof evenement != "undefined" && evenement != null){
+				switch(evenement.which){
+					case 49: 
+						if(keys[key].player == 1){
+							keys[key].container.removeClass('lighting');
+							keys[key].remove();
+							keys.splice(key,1);
+							console.log('Player 1 SCORED !');
+							leds[keys[key].player-1] = false;
+						}
+						break;
+					case 50: 
+						if(keys[key].player == 2){
+							keys[key].container.removeClass('lighting');
+							keys[key].remove();
+							keys.splice(key,1);
+							console.log('Player 2 SCORED !');
+							leds[keys[key].player-1] = false;
+						}
+						break;
+					case 51: 
+						if(keys[key].player == 3){
+							keys[key].container.removeClass('lighting');
+							keys[key].remove();
+							keys.splice(key,1);
+							console.log('Player 3 SCORED !');
+							leds[keys[key].player-1] = false;
+						}
+						break;
+					case 52: 
+						if(keys[key].player == 4){
+							keys[key].container.removeClass('lighting');
+							keys[key].remove();
+							keys.splice(key,1);
+							console.log('Player 4 SCORED !');
+							leds[keys[key].player-1] = false;
+						}
+						break;
+					case 53: 
+						if(keys[key].player == 5){
+							keys[key].container.removeClass('lighting');
+							keys[key].remove();
+							keys.splice(key,1);
+							console.log('Player 5 SCORED !');
+							leds[keys[key].player-1] = false;
+						}
+						break;
+					case 54: 
+						if(keys[key].player == 6){
+							keys[key].container.removeClass('lighting');
+							keys[key].remove();
+							keys.splice(key,1);
+							console.log('Player 6 SCORED !');
+							leds[keys[key].player-1] = false;
+						}
+						break;
+				}
+			}			
 			
 		}else if( x < ledX){
 			keys[key].container.removeClass('lighting');
 			keys[key].remove();
 			keys.splice(key,1);
+			leds[key] = false;
 		}
 	}
 }
 
 window.setInterval(collision,10)
+
 
 /*step: function(){
 			var keyX = actualKey.position().left;
