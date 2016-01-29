@@ -9,6 +9,15 @@ require_once("functions.php");
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="script/jquery-2.2.0.min.js"></script>
     <script type='text/javascript' src='http://www.midijs.net/lib/midi.js'></script>
+    <script type="text/javascript" src="script/AudioDetect.js"></script>
+    <script type="text/javascript" src="script/LoadPlugin.js"></script>
+    <script type="text/javascript" src="script/Plugin.js"></script>
+    <script type="text/javascript" src="script/Player.js"></script>
+    <script type="text/javascript" src="script/Synthesia.js"></script>
+    <script type="text/javascript" src="script/Loader.js"></script>
+    <script type="text/javascript" src="script/Event.js"></script>
+    <script type="text/javascript" src="script/DomLoader.js"></script>
+    <script type="text/javascript" src="script/base64Binary.js"></script>
     <script type='text/javascript' src='script/Sequencer.js'></script>
     <script type='text/javascript' src='script/main.js'></script>
 
