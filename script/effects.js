@@ -123,6 +123,12 @@ var collision = function(){
 								keys[key].remove();
 								keys.splice(key,1);
 								console.log('Player 1 SCORED !');
+								MIDI.loadPlugin({
+									instrument: "acoustic_grand_piano", // or "Acoustic Grand Piano"
+									callback: function() {
+										MIDI.noteOn(0, Math.floor((Math.random() * 100) + 40), 127, 0); // plays note once loaded
+									}
+								});
 							}
 							break;
 						case 50: 
@@ -131,6 +137,12 @@ var collision = function(){
 								keys[key].remove();
 								keys.splice(key,1);
 								console.log('Player 2 SCORED !');
+								MIDI.loadPlugin({
+									instrument: "acoustic_grand_piano", // or "Acoustic Grand Piano"
+									callback: function() {
+										MIDI.noteOn(0, Math.floor((Math.random() * 100) + 40), 127, 0); // plays note once loaded
+									}
+								});
 							}
 							break;
 						case 51: 
@@ -139,6 +151,12 @@ var collision = function(){
 								keys[key].remove();
 								keys.splice(key,1);
 								console.log('Player 3 SCORED !');
+								MIDI.loadPlugin({
+									instrument: "acoustic_grand_piano", // or "Acoustic Grand Piano"
+									callback: function() {
+										MIDI.noteOn(0, Math.floor(Math.random()*(100-40+1)+40), 127, 0); // plays note once loaded
+									}
+								});
 							}
 							break;
 						case 52: 
@@ -147,6 +165,12 @@ var collision = function(){
 								keys[key].remove();
 								keys.splice(key,1);
 								console.log('Player 4 SCORED !');
+								MIDI.loadPlugin({
+									instrument: "acoustic_grand_piano", // or "Acoustic Grand Piano"
+									callback: function() {
+										MIDI.noteOn(0, Math.floor(Math.random()*(100-40+1)+40), 127, 0); // plays note once loaded
+									}
+								});
 							}
 							break;
 						case 53: 
@@ -155,6 +179,12 @@ var collision = function(){
 								keys[key].remove();
 								keys.splice(key,1);
 								console.log('Player 5 SCORED !');
+								MIDI.loadPlugin({
+									instrument: "acoustic_grand_piano", // or "Acoustic Grand Piano"
+									callback: function() {
+										MIDI.noteOn(0, Math.floor(Math.random()*(100-40+1)+40), 127, 0); // plays note once loaded
+									}
+								});
 							}
 							break;
 						case 54: 
@@ -163,6 +193,12 @@ var collision = function(){
 								keys[key].remove();
 								keys.splice(key,1);
 								console.log('Player 6 SCORED !');
+								MIDI.loadPlugin({
+									instrument: "acoustic_grand_piano", // or "Acoustic Grand Piano"
+									callback: function() {
+										MIDI.noteOn(0, Math.floor(Math.random()*(100-40+1)+40), 127, 0); // plays note once loaded
+									}
+								});
 							}
 							break;
 					}
